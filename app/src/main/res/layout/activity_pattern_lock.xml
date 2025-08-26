@@ -5,14 +5,27 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary"
     tools:context=".patternLockView.PatternLockActivity">
 
-    <com.example.testeverything.patternLockView.libs.PatternLockView
+<!--    <com.example.testeverything.patternLockView.libs.PatternLockView-->
+<!--        android:id="@+id/plv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintDimensionRatio="1:1"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <com.example.testeverything.patternLockView.custom.PatternLockViewCustom
+        android:id="@+id/plv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/primary"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent" />
 
-
+    <ImageView
+        android:id="@+id/ivPreview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

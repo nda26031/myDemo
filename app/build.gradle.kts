@@ -74,4 +74,6 @@ dependencies {
     implementation("androidx.media3:media3-ui-compose:1.7.1")
 
     implementation("com.vanniktech:android-image-cropper:4.6.0")
+    implementation ("jp.wasabeef:glide-transformations:4.3.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }
