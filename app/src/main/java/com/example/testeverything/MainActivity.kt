@@ -32,6 +32,7 @@ import com.example.testeverything.rotateandcrop.GetPhotoActivity
 import com.example.testeverything.rvmultitype.MultipleTypeRcvActivity
 import com.example.testeverything.saveimageofview.SaveImageGalleryActivity
 import com.example.testeverything.singleselection.SecondActivity
+import com.furkanozcan.patternlock.ui.PatternLockActivity2
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.GoogleMap
 
@@ -82,7 +83,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnSingleSelectionRv.setOnClickListener {
 //            val intent = Intent(this, SecondActivity::class.java)
 //            startActivity(intent)
-            startActivity(Intent(this, PatternLockActivity::class.java))
+            startActivity(Intent(this, PatternLockActivity2::class.java))
 
         }
 

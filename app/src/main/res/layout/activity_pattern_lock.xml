@@ -8,14 +8,7 @@
     android:background="@color/primary"
     tools:context=".patternLockView.PatternLockActivity">
 
-<!--    <com.example.testeverything.patternLockView.libs.PatternLockView-->
-<!--        android:id="@+id/plv"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        app:layout_constraintDimensionRatio="1:1"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <com.example.testeverything.patternLockView.custom.PatternLockViewCustom
+    <com.example.testeverything.patternLockView.libs.PatternLockView
         android:id="@+id/plv"
         android:layout_width="match_parent"
         android:layout_height="0dp"

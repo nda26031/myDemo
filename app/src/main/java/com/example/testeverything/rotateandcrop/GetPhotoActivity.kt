@@ -46,7 +46,7 @@ class GetPhotoActivity : AppCompatActivity() {
                 fromUser: Boolean
             ) {
                 binding.civPhoto.rotatedDegrees = process
-                binding.tvRotation.text = "${binding.civPhoto.rotatedDegrees}"
+                    binding.tvRotation.text = "${binding.civPhoto.rotatedDegrees}"
             }
 
             override fun onStartTrackingTouch(p0: SeekBar?) {}
@@ -55,7 +55,7 @@ class GetPhotoActivity : AppCompatActivity() {
         })
 
         binding.btnCrop.setOnClickListener {
-            croppedBitmap = binding.civPhoto.croppedImage
+            croppedBitmap = binding.civPhoto.getCroppedImage()
             croppedBitmap?.let {
                 val file = File(cacheDir, "cropped_result.jpg")
                 FileOutputStream(file).use { out ->
