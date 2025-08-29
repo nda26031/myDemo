@@ -1,8 +1,8 @@
 package com.example.testeverything.patternLockView.custom
 
 data class Dot(
-    val rowIndex: Int = 0,
-    val columnIndex: Int = 0,
+    val rowIndex: Float = 0.0f,
+    val columnIndex: Float = 0.0f,
     val leftPoint: Int = 0,
     val rightPoint: Int = 0,
     val topPoint: Int = 0,

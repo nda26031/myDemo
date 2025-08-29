@@ -1,4 +1,4 @@
-package com.furkanozcan.patternlock.ui.component.patternlockview
+package com.example.testeverything.patternLockView.custom
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.os.CountDownTimer
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.ViewGroup
@@ -17,9 +18,7 @@ import androidx.core.view.forEach
 import androidx.core.view.forEachIndexed
 import androidx.core.view.setMargins
 import com.example.testeverything.R
-import com.example.testeverything.patternLockView.custom.Dot
-import com.example.testeverything.patternLockView.custom.DotView
-
+import com.furkanozcan.patternlock.ui.component.patternlockview.PatternViewState
 
 class PatternLockView @JvmOverloads constructor(
     context: Context,
@@ -216,9 +215,9 @@ class PatternLockView @JvmOverloads constructor(
     private fun drawPatternView(
         rowSize: Int = 3,
         columnSize: Int = 3,
-        layoutParams: ViewGroup.LayoutParams = LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
+        layoutParams: LayoutParams = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.WRAP_CONTENT
         ).apply {
             weight = 1f
             gravity = Gravity.CENTER
@@ -230,8 +229,8 @@ class PatternLockView @JvmOverloads constructor(
                 for (columnIndex in 0 until columnSize) {
                     createRow(
                         this, LayoutParams(
-                            ViewGroup.LayoutParams.WRAP_CONTENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
+                            LayoutParams.WRAP_CONTENT,
+                            LayoutParams.WRAP_CONTENT
                         ).apply {
                             weight = 1f
                             gravity = Gravity.CENTER
@@ -243,7 +242,7 @@ class PatternLockView @JvmOverloads constructor(
         }
     }
 
-    private fun createRow(view: LinearLayout, layoutParams: ViewGroup.LayoutParams): LinearLayout {
+    private fun createRow(view: LinearLayout, layoutParams: LayoutParams): LinearLayout {
         view.apply {
             addView(LinearLayout(context).apply {
                 this.layoutParams = layoutParams
@@ -260,7 +259,8 @@ class PatternLockView @JvmOverloads constructor(
             addView(
                 DotView(context).apply {
                     (layoutParams as MarginLayoutParams).setMargins(margins)
-                    setDotViewColor(attrDotColor)
+                    setDotImageWithMash(R.drawable.astronaut, R.drawable.shape_5)
+//                    setDotViewColor(attrDotColor)
                     setKey(nodeKey)
                 }
             )
@@ -281,8 +281,8 @@ class PatternLockView @JvmOverloads constructor(
 
                     initialDotList.add(
                         Dot(
-                            rowIndex = rowIndex,
-                            columnIndex = columnIndex,
+                            rowIndex = rowIndex.toFloat(),
+                            columnIndex = columnIndex.toFloat(),
                             leftPoint = rect.left,
                             rightPoint = rect.right,
                             topPoint = rect.top,
@@ -296,8 +296,12 @@ class PatternLockView @JvmOverloads constructor(
     }
 
     private fun drawLine(canvas: Canvas?) {
+        Log.d("TAG", "drawLine: $markedDotList")
+        Log.d("TAG", "drawLine: ${markedDotList.size}")
         markedDotList.forEachIndexed { index, _ ->
             if (index + 1 < markedDotList.size) {
+                Log.d("TAG", "drawLine index: $index")
+                Log.d("TAG", "drawLine markedDotList[index]: ${markedDotList[index]}")
                 canvas?.drawLine(
                     (markedDotList[index].rightPoint + markedDotList[index].leftPoint) / 2.toFloat(),
                     ((markedDotList[index].bottomPoint.toFloat()) + (markedDotList[index].topPoint.toFloat())) / 2,
@@ -322,12 +326,12 @@ class PatternLockView @JvmOverloads constructor(
 
         if (isDotSelected(touchedDot)) return false
 
-        markedDotList.takeIf { it.size != 0 }?.last()?.let { lastTouchedDot ->
+        markedDotList.takeIf { it.isNotEmpty() }?.last()?.let { lastTouchedDot ->
             val rowIndex = (lastTouchedDot.rowIndex + touchedDot.rowIndex) / 2
             val columnIndex =
                 (lastTouchedDot.columnIndex + touchedDot.columnIndex) / 2
 
-            getDotWithIndex(rowIndex.toFloat(), columnIndex.toFloat())?.let { previousDot ->
+            getDotWithIndex(rowIndex, columnIndex)?.let { previousDot ->
                 if (isDotSelected(previousDot).not()) {
                     selectDotView(previousDot)
                 }
@@ -352,7 +356,7 @@ class PatternLockView @JvmOverloads constructor(
         } != null
 
     private fun getDotWithIndex(rowIndex: Float, columnIndex: Float) = initialDotList.firstOrNull {
-        it.rowIndex.toFloat() == rowIndex && it.columnIndex.toFloat() == columnIndex
+        it.rowIndex == rowIndex && it.columnIndex == columnIndex
     }
 
     private fun selectDotView(selectedDot: Dot) {
@@ -395,12 +399,14 @@ class PatternLockView @JvmOverloads constructor(
             (((this.getChildAt(dot.rowIndex.toInt()) as? ViewGroup)
                 ?.getChildAt(dot.columnIndex.toInt()) as? ViewGroup)
                 ?.getChildAt(0) as? DotView)
-                ?.setDotViewColor(dotColor)
+//                ?.setDotViewColor(dotColor)
+                ?.setDotImageWithMash(R.drawable.astronaut, R.drawable.shape_5)
+
         }
     }
 
     private fun getDrawnPatternKey() =
-        markedDotList.map { it.key }.joinToString("")
+        markedDotList.joinToString("") { it.key.toString() }
 
     fun reset() {
         state = PatternViewState.Initial

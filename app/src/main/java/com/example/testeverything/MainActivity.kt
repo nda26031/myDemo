@@ -1,22 +1,10 @@
 package com.example.testeverything
 
-import android.animation.ObjectAnimator
-import android.animation.ValueAnimator
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.net.Uri
 import android.os.Bundle
-import android.provider.Settings
-import android.view.animation.LinearInterpolator
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.media3.common.MediaItem
@@ -26,13 +14,10 @@ import com.example.testeverything.camerax.CameraxActivity
 import com.example.testeverything.charginginfo.ChargingInfoActivity
 import com.example.testeverything.databinding.ActivityMainBinding
 import com.example.testeverything.googlemap.GoogleMapActivity
-import com.example.testeverything.patternLockView.PatternLockActivity
-import com.example.testeverything.requestPermission.RequestPermissionActivity
 import com.example.testeverything.rotateandcrop.GetPhotoActivity
 import com.example.testeverything.rvmultitype.MultipleTypeRcvActivity
 import com.example.testeverything.saveimageofview.SaveImageGalleryActivity
-import com.example.testeverything.singleselection.SecondActivity
-import com.furkanozcan.patternlock.ui.PatternLockActivity2
+import com.example.testeverything.patternLockView.custom.PatternLockActivity2
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.maps.GoogleMap
 

@@ -1,4 +1,4 @@
-package com.furkanozcan.patternlock.ui.component.patternlockview
+package com.example.testeverything.patternLockView.custom
 
 enum class PatternViewStageState {
     FIRST, SECOND

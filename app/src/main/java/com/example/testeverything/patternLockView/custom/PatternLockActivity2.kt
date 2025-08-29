@@ -1,4 +1,4 @@
-package com.furkanozcan.patternlock.ui
+package com.example.testeverything.patternLockView.custom
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,7 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.testeverything.R
 import com.example.testeverything.databinding.ActivityPatternLock2Binding
 import com.furkanozcan.patternlock.ui.component.patternlockview.PatternViewState
-import com.furkanozcan.patternlock.ui.component.patternlockview.PatternViewStageState
+import com.furkanozcan.patternlock.ui.PatternLockViewModel
 
 class PatternLockActivity2 : AppCompatActivity() {
     private val viewModel: PatternLockViewModel by viewModels()
