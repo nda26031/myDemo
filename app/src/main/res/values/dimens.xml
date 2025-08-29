@@ -11,7 +11,7 @@
     <dimen name="_56dp">56dp</dimen>
 
     <!-- dot view -->
-    <dimen name="dot_view_size">12dp</dimen>
+    <dimen name="dot_view_size">52dp</dimen>
     <dimen name="dot_view_margin">16dp</dimen>
 
     <!-- textView -->
